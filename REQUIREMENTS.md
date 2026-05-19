@@ -8,19 +8,23 @@
 
 ## API Keys / Credentials Required
 
-| Service | Environment Variable(s) | Where to Get |
-|---|---|---|
-| MongoDB Atlas | `MONGO_URI` | mongodb.com/cloud/atlas → Free M0 cluster → Connect → Copy connection string |
-| Cloudinary | `CLOUDINARY_CLOUD_NAME` `CLOUDINARY_API_KEY` `CLOUDINARY_API_SECRET` | cloudinary.com → Dashboard → API Keys |
-| Gmail SMTP | `GMAIL_USER` `GMAIL_APP_PASSWORD` | Google Account → Security → 2FA → App Passwords → Generate for "Mail" |
-| JWT | `JWT_SECRET` | Generate locally: `node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"` |
+| Service | Environment Variable(s) | Where to Get | Why it's Required |
+|---|---|---|---|
+| MongoDB Atlas (or Local) | `MONGO_URI` | **Atlas:** mongodb.com/cloud/atlas<br>**Local:** MongoDB Compass | Connects the backend to the primary database where all application data (users, jobs, etc.) is stored. |
+| Cloudinary | `CLOUDINARY_CLOUD_NAME` `CLOUDINARY_API_KEY` `CLOUDINARY_API_SECRET` | cloudinary.com → Dashboard → API Keys | Required to upload, store, and serve user files (like resumes and profile pictures) securely. |
+| Gmail SMTP | `GMAIL_USER` `GMAIL_APP_PASSWORD` | Google Account → Security → 2FA → App Passwords → Generate for "Mail" | Enables the application to send automated emails (e.g., interview schedules, rejection notices) to applicants. |
+| JWT | `JWT_SECRET` | Generate locally: `node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"` | Used to sign and verify JSON Web Tokens for secure user authentication and session management. |
 
 ---
 
 ## .env File Template (Backend)
 
 ```
+# Use this for MongoDB Atlas (Cloud)
 MONGO_URI=mongodb+srv://<user>:<password>@cluster0.xxxxx.mongodb.net/ats_db
+
+# OR use this for Local MongoDB (Compass)
+# MONGO_URI=mongodb://localhost:27017/ats_db
 JWT_SECRET=your_random_secret_here
 CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_api_key
@@ -172,7 +176,9 @@ react-router-dom axios
 
 ## Setup Steps
 
-### 1. MongoDB Atlas
+### 1. MongoDB Setup
+
+**Option A: MongoDB Atlas (Cloud - Recommended for Deployment)**
 1. Go to mongodb.com/cloud/atlas → create a free account
 2. Create a new project → deploy a free **M0 cluster**
 3. **Database Access** → Add a database user (set username + password)
@@ -180,6 +186,12 @@ react-router-dom axios
 5. **Clusters** → Connect → Connect your application → Copy the URI
 6. Replace `<password>` in the URI with your database user's password
 7. Save as `MONGO_URI` in your `.env` file
+
+**Option B: Local MongoDB (using Compass - Good for Local Development)**
+1. Download and install [MongoDB Community Server](https://www.mongodb.com/try/download/community).
+2. Download and install [MongoDB Compass](https://www.mongodb.com/try/download/compass).
+3. Open MongoDB Compass and click **Connect** (it defaults to `mongodb://localhost:27017`).
+4. Save `MONGO_URI=mongodb://localhost:27017/ats_db` in your `.env` file. (The database `ats_db` will be created automatically when data is inserted).
 
 ### 2. Cloudinary
 1. Go to cloudinary.com → create a free account

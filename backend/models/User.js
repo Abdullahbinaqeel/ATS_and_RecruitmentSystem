@@ -156,6 +156,27 @@ const userSchema = new mongoose.Schema(
     coverLetterUrl: {
       type: String,
       default: ''
+    },
+
+    // Academic background — each entry is one qualification
+    education: [{
+      degree:       { type: String, trim: true },
+      institution:  { type: String, trim: true },
+      fieldOfStudy: { type: String, trim: true, default: '' },
+      startYear:    { type: Number },
+      endYear:      { type: Number },
+      grade:        { type: String, trim: true, default: '' },
+      current:      { type: Boolean, default: false }
+    }],
+
+    // Free-form skill/interest tags (e.g. ["React", "Python", "Leadership"])
+    skills: [{ type: String, trim: true }],
+
+    // What kind of roles the candidate is looking for
+    jobPreferences: {
+      jobTypes:             [{ type: String }],  // Full-time, Part-time, Remote …
+      preferredDepartments: [{ type: String }],  // Engineering, Design …
+      preferredLocations:   [{ type: String }]   // Islamabad, Lahore, Karachi, Remote
     }
   },
   {

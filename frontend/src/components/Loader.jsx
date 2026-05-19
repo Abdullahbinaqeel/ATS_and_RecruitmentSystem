@@ -22,6 +22,7 @@
 // ============================================================
 
 import React from 'react';
+import { LuBriefcase } from 'react-icons/lu';
 
 // ── Full-Page Loader ──────────────────────────────────────────
 // Props:
@@ -33,17 +34,14 @@ const Loader = ({ message = 'Loading…' }) => (
   <div className="loader-fullpage" style={{
     display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px',
   }}>
-    {/* Branded logo mark — same gradient square as in the Navbar */}
+    {/* Branded logo mark — rust gradient square */}
     <div style={{
       width: '44px', height: '44px', borderRadius: '12px',
-      background: 'linear-gradient(135deg, #3B82F6, #6366F1)',
+      background: 'linear-gradient(135deg, #D97706, #EA580C)',
       display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '8px',
     }}>
-      {/* SVG briefcase icon — inline SVGs don't require any image files */}
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z" />
-        <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" />
-      </svg>
+      {/* Briefcase icon from react-icons */}
+      <LuBriefcase color="white" size={24} strokeWidth={2.2} />
     </div>
 
     {/* The spinning circle — its animation is defined in index.css */}

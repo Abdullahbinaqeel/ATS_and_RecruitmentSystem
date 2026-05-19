@@ -383,10 +383,10 @@ const CandidateDashboard = () => {
               <div style={{ fontSize: '28px' }}>📄</div>
               <div style={{ flex: 1 }}>
                 <div style={{ fontWeight: '600', marginBottom: '4px' }}>Resume</div>
-                {user?.resume ? (
+                {user?.resumeUrl ? (
                   // Show a link if the resume URL exists
                   <a
-                    href={user.resume}
+                    href={user.resumeUrl}
                     target="_blank"        // Open in a new tab
                     rel="noopener noreferrer" // Security: prevents new tab from accessing parent window
                     style={{ fontSize: '13px', color: 'var(--primary)', fontWeight: '500' }}
@@ -417,9 +417,9 @@ const CandidateDashboard = () => {
               <div style={{ fontSize: '28px' }}>📝</div>
               <div style={{ flex: 1 }}>
                 <div style={{ fontWeight: '600', marginBottom: '4px' }}>Cover Letter</div>
-                {user?.coverLetter ? (
+                {user?.coverLetterUrl ? (
                   <a
-                    href={user.coverLetter}
+                    href={user.coverLetterUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{ fontSize: '13px', color: 'var(--primary)', fontWeight: '500' }}
@@ -436,7 +436,7 @@ const CandidateDashboard = () => {
           </div>
 
           {/* Warning banner if resume is missing — shown below the grid */}
-          {!user?.resume && (
+          {!user?.resumeUrl && (
             <div className="alert alert-warning" style={{ marginTop: '16px' }}>
               ⚠️ You need to upload a resume before you can apply for jobs.{' '}
               <Link to="/profile" style={{ color: 'inherit', textDecoration: 'underline', fontWeight: '600' }}>

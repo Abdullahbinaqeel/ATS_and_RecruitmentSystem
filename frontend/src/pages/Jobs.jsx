@@ -23,6 +23,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import api from '../api/axios';
 import JobCard from '../components/JobCard';
 import { SectionLoader } from '../components/Loader';
+import { LuSearch, LuSearchX } from 'react-icons/lu';
 
 // ── Department List ───────────────────────────────────────────
 // Hardcoded to match the backend's allowed department values.
@@ -195,13 +196,9 @@ const Jobs = () => {
                   style={{ paddingLeft: '36px' }} // Extra left padding for the icon
                 />
                 {/* Search icon positioned inside the input on the left */}
-                <svg
-                  style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)' }}
-                  width="16" height="16" fill="none" viewBox="0 0 24 24"
-                  stroke="var(--text-muted)" strokeWidth="2"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
+                <div style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', display: 'flex', alignItems: 'center' }}>
+                  <LuSearch size={16} color="var(--text-muted)" strokeWidth={2} />
+                </div>
               </div>
             </div>
 
@@ -309,7 +306,9 @@ const Jobs = () => {
         ) : jobs.length === 0 ? (
           // Empty state — message differs depending on whether filters are active
           <div className="card" style={{ textAlign: 'center', padding: '60px 24px' }}>
-            <div className="empty-state-icon">🔍</div>
+            <div className="empty-state-icon">
+              <LuSearchX size={32} color="var(--text-muted)" />
+            </div>
             <h3 style={{ fontSize: '20px', fontWeight: '700', margin: '12px 0 8px', color: 'var(--text-primary)' }}>
               No Jobs Found
             </h3>

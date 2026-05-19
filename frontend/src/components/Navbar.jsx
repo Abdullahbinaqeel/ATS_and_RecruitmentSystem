@@ -33,6 +33,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 // useTheme gives us current theme ('light'/'dark') and toggleTheme()
 import { useTheme } from '../context/ThemeContext';
+import { LuBriefcase, LuSun, LuMoon } from 'react-icons/lu';
 
 const Navbar = () => {
   // menuOpen: is the mobile hamburger menu visible?
@@ -119,13 +120,10 @@ const Navbar = () => {
             {/* Gradient square with briefcase icon */}
             <div style={{
               width: '32px', height: '32px', borderRadius: '9px',
-              background: 'linear-gradient(135deg, #3B82F6, #6366F1)',
+              background: 'linear-gradient(135deg, #D97706, #EA580C)',
               display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
             }}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z" />
-                <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" />
-              </svg>
+              <LuBriefcase color="white" size={18} strokeWidth={2.2} />
             </div>
             {/* Brand name text — color changes based on isDark */}
             <span style={{
@@ -250,24 +248,10 @@ const Navbar = () => {
           >
             {/* Sun icon — shown in dark mode (click to go light) */}
             {theme === 'dark' ? (
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="5" />
-                <line x1="12" y1="1" x2="12" y2="3" />
-                <line x1="12" y1="21" x2="12" y2="23" />
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                <line x1="1" y1="12" x2="3" y2="12" />
-                <line x1="21" y1="12" x2="23" y2="12" />
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-              </svg>
+              <LuSun size={16} strokeWidth={2} />
             ) : (
               /* Moon icon — shown in light mode (click to go dark) */
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-              </svg>
+              <LuMoon size={15} strokeWidth={2} />
             )}
           </button>
 
@@ -321,7 +305,7 @@ const Navbar = () => {
                 display: 'block', padding: '12px 16px',
                 fontSize: '15px', fontWeight: isActive(item.to) ? '700' : '500',
                 color: isActive(item.to)
-                  ? (isDark ? '#60A5FA' : 'var(--primary)')
+                  ? (isDark ? '#FEF3C7' : 'var(--primary)')
                   : (isDark ? 'rgba(255,255,255,0.7)' : 'var(--text-primary)'),
                 // Left border accent for the active item
                 borderLeft: isActive(item.to)

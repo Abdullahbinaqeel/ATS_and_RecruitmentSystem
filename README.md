@@ -4,7 +4,7 @@
 
 ## Tech Stack
 
-- **Frontend:** React.js, React Router, Axios, Custom CSS (Dark Theme / Glassmorphism)
+- **Frontend:** React.js, React Router, Axios, Custom CSS (Rusty Dark Theme / Off-white Light Theme, react-icons)
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB Atlas (Mongoose)
 - **Authentication:** JWT (JSON Web Tokens) & bcryptjs
@@ -45,8 +45,8 @@ Before running the project locally, ensure you have the following installed:
 - [Node.js](https://nodejs.org/) (v18 or higher)
 - [Git](https://git-scm.com/)
 
-You will also need free accounts for the following services:
-- **MongoDB Atlas** (Free M0 Cluster for database)
+You will also need free accounts for the following services (or use local alternatives):
+- **MongoDB Atlas** (Free M0 Cluster) OR **Local MongoDB** (via MongoDB Compass)
 - **Cloudinary** (For storing resumes and profile pictures)
 - **Google Account** (For Gmail SMTP App Password)
 
@@ -69,7 +69,10 @@ npm install
 
 Create a `.env` file in the `backend` directory using the provided template:
 ```env
+# Use this for MongoDB Atlas (Cloud)
 MONGO_URI=mongodb+srv://<user>:<password>@cluster0.xxxxx.mongodb.net/ats_db
+# OR use this for Local MongoDB (Compass)
+# MONGO_URI=mongodb://localhost:27017/ats_db
 JWT_SECRET=your_random_secret_here
 CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_api_key

@@ -18,6 +18,7 @@ import React from 'react';
 // Link is React Router's version of <a href="...">.
 // It navigates without a full page reload.
 import { Link } from 'react-router-dom';
+import { LuBriefcase } from 'react-icons/lu';
 
 const Footer = () => {
   // Get the current year dynamically.
@@ -48,13 +49,10 @@ const Footer = () => {
               {/* Gradient square icon */}
               <div style={{
                 width: '32px', height: '32px', borderRadius: '9px',
-                background: 'linear-gradient(135deg, #3B82F6, #6366F1)',
+                background: 'linear-gradient(135deg, #D97706, #EA580C)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
               }}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z" />
-                  <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" />
-                </svg>
+                <LuBriefcase color="white" size={18} strokeWidth={2.2} />
               </div>
               <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: '17px', fontWeight: '800', letterSpacing: '-0.02em' }}>
                 TalentBridge

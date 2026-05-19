@@ -14,7 +14,7 @@ echo "=============================================="
 
 # Start the backend server in a subshell
 echo ""
-echo "▶ Starting Backend (Node.js on port 5000)..."
+echo "▶ Starting Backend (Node.js on port 5001)..."
 (cd "$ROOT_DIR/backend" && npm run dev) &
 BACKEND_PID=$!
 
@@ -28,7 +28,7 @@ FRONTEND_PID=$!
 
 echo ""
 echo "=============================================="
-echo "  Backend  → http://localhost:5000"
+echo "  Backend  → http://localhost:5001"
 echo "  Frontend → http://localhost:3000"
 echo "  Press Ctrl+C to stop both servers."
 echo "=============================================="

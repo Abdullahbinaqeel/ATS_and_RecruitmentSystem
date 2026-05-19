@@ -167,6 +167,9 @@ router.post('/register', async (req, res) => {
           profilePicture: user.profilePicture,
           resumeUrl: user.resumeUrl,
           coverLetterUrl: user.coverLetterUrl,
+          education: user.education,
+          skills: user.skills,
+          jobPreferences: user.jobPreferences,
           createdAt: user.createdAt
         }
       }
@@ -251,6 +254,9 @@ router.post('/login', async (req, res) => {
           profilePicture: user.profilePicture,
           resumeUrl: user.resumeUrl,
           coverLetterUrl: user.coverLetterUrl,
+          education: user.education,
+          skills: user.skills,
+          jobPreferences: user.jobPreferences,
           createdAt: user.createdAt
         }
       }
@@ -306,13 +312,16 @@ router.get('/me', protect, async (req, res) => {
  */
 router.put('/profile', protect, async (req, res) => {
   try {
-    const { name, phone, address } = req.body;
+    const { name, phone, address, education, skills, jobPreferences } = req.body;
 
     // Collect only the fields that were actually sent in the request
     const updates = {};
     if (name !== undefined) updates.name = name;
     if (phone !== undefined) updates.phone = phone;
     if (address !== undefined) updates.address = address;
+    if (education !== undefined) updates.education = education;
+    if (skills !== undefined) updates.skills = skills;
+    if (jobPreferences !== undefined) updates.jobPreferences = jobPreferences;
 
     /*
      * findByIdAndUpdate(id, update, options):

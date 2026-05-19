@@ -20,25 +20,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 // useAuth gives us the login() function from AuthContext
 import { useAuth } from '../context/AuthContext';
+import { LuBriefcase, LuEye, LuEyeOff, LuCircleAlert } from 'react-icons/lu';
 
-// ============================================================
-// EyeIcon — Password Visibility Toggle Icon
-//
-// Props:
-//   open — if true, shows the "eye open" SVG (password visible)
-//          if false, shows the "eye with slash" SVG (password hidden)
-// ============================================================
-const EyeIcon = ({ open }) => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-    stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-    {open
-      // Eye open: a curved path + circle pupil
-      ? <><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></>
-      // Eye with slash: eye path + diagonal line
-      : <><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24" /><line x1="1" y1="1" x2="23" y2="23" /></>
-    }
-  </svg>
-);
 
 // ============================================================
 // Login Component
@@ -118,13 +101,10 @@ const Login = () => {
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', position: 'relative' }}>
           <div style={{
             width: '36px', height: '36px', borderRadius: '10px',
-            background: 'linear-gradient(135deg, #3B82F6, #6366F1)',
+            background: 'linear-gradient(135deg, #D97706, #EA580C)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z" />
-              <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" />
-            </svg>
+            <LuBriefcase color="white" size={20} strokeWidth={2.2} />
           </div>
           <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: '18px', fontWeight: '800', color: '#fff', letterSpacing: '-0.02em' }}>
             TalentBridge
@@ -190,7 +170,7 @@ const Login = () => {
           {error && (
             <div className="alert alert-error">
               {/* Warning icon SVG */}
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <LuCircleAlert size={16} strokeWidth={2} />
               {error}
             </div>
           )}
@@ -235,7 +215,7 @@ const Login = () => {
                 {/* Eye icon button toggles showPw */}
                 {/* type="button" prevents it from submitting the form */}
                 <button type="button" className="input-icon-btn" onClick={() => setShowPw(s => !s)}>
-                  <EyeIcon open={showPw} />
+                  {showPw ? <LuEye size={18} strokeWidth={1.8} /> : <LuEyeOff size={18} strokeWidth={1.8} />}
                 </button>
               </div>
             </div>

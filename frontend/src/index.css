@@ -5,31 +5,31 @@
 
 /* ── Design Tokens ─────────────────────────────────────────── */
 :root {
-  /* Brand blues */
-  --primary:        #3B82F6;
-  --primary-dark:   #2563EB;
-  --primary-glow:   rgba(59, 130, 246, 0.18);
-  --primary-light:  #EFF6FF;
+  /* Brand Rust/Amber */
+  --primary:        #D97706;
+  --primary-dark:   #B45309;
+  --primary-glow:   rgba(217, 119, 6, 0.18);
+  --primary-light:  #FEF3C7;
 
   /* Dark palette — hero, footer */
-  --dark:           #060C18;
-  --dark-2:         #0C1526;
-  --dark-3:         #121F35;
-  --dark-card:      #162035;
+  --dark:           #0A0706;
+  --dark-2:         #14100E;
+  --dark-3:         #1C1613;
+  --dark-card:      #211A16;
   --dark-border:    rgba(255, 255, 255, 0.08);
 
   /* Light palette — content sections */
-  --bg:             #F7F9FC;
+  --bg:             #FAF9F6;
   --surface:        #FFFFFF;
-  --border:         #E4E9F0;
-  --border-focus:   #3B82F6;
+  --border:         #E5E5E0;
+  --border-focus:   #D97706;
 
   /* Text */
-  --text-primary:   #0A1020;
-  --text-secondary: #4B5A72;
-  --text-muted:     #8A9BB8;
-  --text-on-dark:   #F0F4FF;
-  --text-on-dark-2: #8A9FBF;
+  --text-primary:   #1F1612;
+  --text-secondary: #5E4A3F;
+  --text-muted:     #8C7A6B;
+  --text-on-dark:   #FFF6ED;
+  --text-on-dark-2: #D4C4B7;
 
   /* Semantic */
   --success: #10B981;
@@ -42,7 +42,7 @@
   --shadow-md:   0 4px 20px rgba(10, 16, 32, 0.08);
   --shadow-lg:   0 12px 40px rgba(10, 16, 32, 0.12);
   --shadow-xl:   0 24px 60px rgba(10, 16, 32, 0.18);
-  --shadow-blue: 0 8px 32px rgba(59, 130, 246, 0.35);
+  --shadow-blue: 0 8px 32px rgba(217, 119, 6, 0.35);
 
   /* Radii */
   --r-sm:   6px;
@@ -70,28 +70,28 @@
    switches — no JSX changes needed anywhere.
    ──────────────────────────────────────────────────────────────── */
 [data-theme="dark"] {
-  /* Page & card backgrounds — dark navy tones */
-  --bg:           #0D1422;
-  --surface:      #152032;
+  /* Page & card backgrounds — completely dark rusty */
+  --bg:           #0A0706;
+  --surface:      #14100E;
   --border:       rgba(255, 255, 255, 0.08);
-  --border-focus: #3B82F6;
+  --border-focus: #D97706;
 
   /* Text — light on dark */
-  --text-primary:   #EDF2FF;
-  --text-secondary: #8BA3C7;
-  --text-muted:     #4D6480;
+  --text-primary:   #FFF6ED;
+  --text-secondary: #D4C4B7;
+  --text-muted:     #8C7A6B;
 
-  /* Blue tint backgrounds need to be darker in dark mode */
-  --primary-light: rgba(59, 130, 246, 0.12);
+  /* Primary tint backgrounds need to be darker in dark mode */
+  --primary-light: rgba(217, 119, 6, 0.15);
 
   /* Shadows are more dramatic on dark backgrounds */
-  --shadow-sm:  0 1px 4px rgba(0, 0, 0, 0.35);
-  --shadow-md:  0 4px 20px rgba(0, 0, 0, 0.45);
-  --shadow-lg:  0 12px 40px rgba(0, 0, 0, 0.55);
-  --shadow-xl:  0 24px 60px rgba(0, 0, 0, 0.65);
+  --shadow-sm:  0 1px 4px rgba(0, 0, 0, 0.6);
+  --shadow-md:  0 4px 20px rgba(0, 0, 0, 0.7);
+  --shadow-lg:  0 12px 40px rgba(0, 0, 0, 0.8);
+  --shadow-xl:  0 24px 60px rgba(0, 0, 0, 0.9);
 
   /* Keep legacy alias in sync */
-  --secondary: #EDF2FF;
+  --secondary: #FFF6ED;
 }
 
 /* ── Dark Mode: Specific Component Overrides ─────────────────────
@@ -257,7 +257,7 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--primary-dark);
   border-color: var(--primary-dark);
   transform: translateY(-1px);
-  box-shadow: 0 12px 40px rgba(59, 130, 246, 0.5);
+  box-shadow: 0 12px 40px rgba(217, 119, 6, 0.5);
 }
 .btn-primary:active:not(:disabled) { transform: translateY(0); }
 
@@ -355,7 +355,7 @@ h1, h2, h3, h4, h5, h6 {
 .card-hover:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
-  border-color: rgba(59, 130, 246, 0.25);
+  border-color: rgba(217, 119, 6, 0.25);
 }
 
 /* Dark card */
@@ -617,7 +617,7 @@ tbody tr:hover td { background: #F8FAFF; }
 .spinner {
   width: 36px;
   height: 36px;
-  border: 3px solid rgba(59, 130, 246, 0.2);
+  border: 3px solid rgba(217, 119, 6, 0.2);
   border-top-color: var(--primary);
   border-radius: 50%;
   animation: spin 0.75s linear infinite;
@@ -738,7 +738,7 @@ tbody tr:hover td { background: #F8FAFF; }
   justify-content: center;
   margin-bottom: 16px;
 }
-.stat-icon-blue   { background: #EFF6FF; color: #2563EB; }
+.stat-icon-blue   { background: #FEF3C7; color: #D97706; }
 .stat-icon-purple { background: #F5F3FF; color: #7C3AED; }
 .stat-icon-green  { background: #F0FDF4; color: #16A34A; }
 .stat-icon-amber  { background: #FFFBEB; color: #D97706; }

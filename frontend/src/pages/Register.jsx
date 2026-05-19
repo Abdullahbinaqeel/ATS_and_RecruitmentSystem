@@ -25,18 +25,9 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { LuBriefcase, LuEye, LuEyeOff, LuCircleAlert, LuCheck } from 'react-icons/lu';
 
-// ── EyeIcon: Password Visibility Toggle ──────────────────────
-// Same component as in Login.jsx — open=true shows eye, false shows eye-with-slash
-const EyeIcon = ({ open }) => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-    stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-    {open
-      ? <><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></>
-      : <><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24" /><line x1="1" y1="1" x2="23" y2="23" /></>
-    }
-  </svg>
-);
+
 
 // ── Password Strength Meter ───────────────────────────────────
 // Returns an object with: label, color, w (bar width %)
@@ -161,13 +152,10 @@ const Register = () => {
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', position: 'relative' }}>
           <div style={{
             width: '36px', height: '36px', borderRadius: '10px',
-            background: 'linear-gradient(135deg, #3B82F6, #6366F1)',
+            background: 'linear-gradient(135deg, #D97706, #EA580C)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z" />
-              <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" />
-            </svg>
+            <LuBriefcase color="white" size={20} strokeWidth={2.2} />
           </div>
           <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: '18px', fontWeight: '800', color: '#fff', letterSpacing: '-0.02em' }}>
             TalentBridge
@@ -199,12 +187,10 @@ const Register = () => {
               {/* Blue circle with checkmark */}
               <div style={{
                 width: '20px', height: '20px', borderRadius: '50%', flexShrink: 0,
-                background: 'rgba(59,130,246,0.2)', border: '1px solid rgba(59,130,246,0.3)',
+                background: 'rgba(217,119,6,0.2)', border: '1px solid rgba(217,119,6,0.3)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '2px',
               }}>
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
+                <LuCheck size={14} color="#D97706" strokeWidth={3} />
               </div>
               <span style={{ fontSize: '14px', color: 'var(--text-on-dark-2)', lineHeight: '1.6' }}>{text}</span>
             </div>
@@ -237,7 +223,7 @@ const Register = () => {
           {/* Global error message from server */}
           {error && (
             <div className="alert alert-error">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <LuCircleAlert size={16} strokeWidth={2} />
               {error}
             </div>
           )}
@@ -299,7 +285,7 @@ const Register = () => {
                   className="form-input" placeholder="Min. 6 characters"
                   value={form.password} onChange={handleChange} autoComplete="new-password" />
                 <button type="button" className="input-icon-btn" onClick={() => setShowPw(s => !s)}>
-                  <EyeIcon open={showPw} />
+                  {showPw ? <LuEye size={18} strokeWidth={1.8} /> : <LuEyeOff size={18} strokeWidth={1.8} />}
                 </button>
               </div>
 
@@ -325,7 +311,7 @@ const Register = () => {
                   className="form-input" placeholder="Repeat your password"
                   value={form.confirmPassword} onChange={handleChange} autoComplete="new-password" />
                 <button type="button" className="input-icon-btn" onClick={() => setShowCp(s => !s)}>
-                  <EyeIcon open={showCp} />
+                  {showCp ? <LuEye size={18} strokeWidth={1.8} /> : <LuEyeOff size={18} strokeWidth={1.8} />}
                 </button>
               </div>
               {fieldErrors.confirmPassword && <span className="form-error">{fieldErrors.confirmPassword}</span>}

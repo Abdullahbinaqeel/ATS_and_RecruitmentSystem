@@ -120,7 +120,7 @@ const JobDetail = () => {
     setApplySuccess('');
 
     // Require the candidate to have a resume uploaded before applying
-    if (!user?.resume) {
+    if (!user?.resumeUrl) {
       setApplyError('Please upload your resume on your Profile page before applying.');
       return;
     }
@@ -414,19 +414,19 @@ const JobDetail = () => {
                   ) : (
                     // Sub-case C: Can apply
                     <>
-                      {/* Warning if no resume uploaded yet */}
-                      {!user?.resume && (
+                      {/* Warning if no CV uploaded yet */}
+                      {!user?.resumeUrl && (
                         <div className="alert alert-warning" style={{ marginBottom: '16px' }}>
-                          ⚠️ Please upload your resume on your{' '}
+                          ⚠️ A CV is <strong>compulsory</strong> before applying for any job. Please upload your CV on your{' '}
                           <Link to="/profile" style={{ color: 'inherit', textDecoration: 'underline' }}>Profile page</Link>{' '}
-                          before applying.
+                          first.
                         </div>
                       )}
                       {/* Apply button — disabled if no resume or currently submitting */}
                       <button
                         className="btn btn-primary w-full"
                         onClick={handleApply}
-                        disabled={applying || !user?.resume}
+                        disabled={applying || !user?.resumeUrl}
                         style={{ width: '100%', justifyContent: 'center' }}
                       >
                         {applying ? <><InlineLoader /> Submitting...</> : 'Apply Now'}

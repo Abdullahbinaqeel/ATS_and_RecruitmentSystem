@@ -190,7 +190,7 @@ router.get('/my', protect, async (req, res) => {
           select: 'name city'       // only need branch name and city
         }
       })
-      .sort({ appliedAt: -1 }); // newest applications first
+      .sort({ createdAt: -1 }); // newest applications first
 
     return res.status(200).json({
       success: true,
@@ -232,7 +232,7 @@ router.get('/job/:jobId', protect, hrOnly, async (req, res) => {
         'name email phone address profilePicture resumeUrl coverLetterUrl createdAt'
       )
       .populate('job', 'title department branch')
-      .sort({ appliedAt: -1 }); // newest first
+      .sort({ createdAt: -1 }); // newest first
 
     return res.status(200).json({
       success: true,

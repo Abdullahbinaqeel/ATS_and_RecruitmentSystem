@@ -312,9 +312,9 @@ const JobApplicants = () => {
                             flexShrink: 0,
                             overflow: 'hidden',
                           }}>
-                            {app.candidate?.profilePic ? (
+                            {app.candidate?.profilePicture ? (
                               <img
-                                src={app.candidate.profilePic}
+                                src={app.candidate.profilePicture}
                                 alt={app.candidate.name}
                                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                               />
@@ -353,9 +353,9 @@ const JobApplicants = () => {
                       <td>
                         <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
                           {/* Resume link — opens PDF in a new tab */}
-                          {app.candidate?.resume ? (
+                          {app.candidate?.resumeUrl ? (
                             <a
-                              href={app.candidate.resume}
+                              href={app.candidate.resumeUrl}
                               target="_blank"
                               rel="noopener noreferrer" // Security: new tab can't access parent window
                               className="btn btn-outline btn-sm"
@@ -368,9 +368,9 @@ const JobApplicants = () => {
                           )}
 
                           {/* Cover letter link — only shown if it exists */}
-                          {app.candidate?.coverLetter && (
+                          {app.candidate?.coverLetterUrl && (
                             <a
-                              href={app.candidate.coverLetter}
+                              href={app.candidate.coverLetterUrl}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="btn btn-outline btn-sm"

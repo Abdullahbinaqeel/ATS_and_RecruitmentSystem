@@ -25,6 +25,7 @@
 import React from 'react';
 // Link navigates to a new route without reloading the page
 import { Link } from 'react-router-dom';
+import { LuMapPin, LuUsers, LuArrowRight } from 'react-icons/lu';
 
 // ── Helper: Format a date string ─────────────────────────────
 // toLocaleDateString formats it as "Jan 5, 2025" (readable)
@@ -50,15 +51,7 @@ const timeAgo = (d) => {
 };
 
 // ── Helper: Inline SVG Icon ───────────────────────────────────
-// Renders an SVG icon using a path data string (d).
-// This way we don't need an icon library — just the path shapes.
-// Props: d (SVG path), size (px)
-const Ico = ({ d, size = 14 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none"
-    stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-    <path d={d} />
-  </svg>
-);
+// (Removed Ico component in favor of lucide-react)
 
 // ── Department Color Palette ──────────────────────────────────
 // Maps each department to a background color and text color.
@@ -155,14 +148,14 @@ const JobCard = ({ job }) => {
       {/* ── Meta Info: Location + Seats ─────────────────── */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
         {/* Location row — uses a map pin SVG icon */}
-        <MetaRow icon="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z">
+        <MetaRow Icon={LuMapPin}>
           {/* branch?.name uses optional chaining — safe even if branch is null */}
           {branch?.name || branch || 'Multiple locations'}
           {branch?.city ? `, ${branch.city}` : ''}
         </MetaRow>
 
         {/* Seats row — uses a people/group SVG icon */}
-        <MetaRow icon="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z">
+        <MetaRow Icon={LuUsers}>
           {/* Pluralize "position" vs "positions" based on seats count */}
           {seats} {seats === 1 ? 'position' : 'positions'} open
         </MetaRow>
@@ -193,7 +186,7 @@ const JobCard = ({ job }) => {
         >
           View role
           {/* Right arrow icon */}
-          <Ico d="M17 8l4 4m0 0l-4 4m4-4H3" size={14} />
+          <LuArrowRight size={14} strokeWidth={2} />
         </Link>
       </div>
     </div>
@@ -204,9 +197,9 @@ const JobCard = ({ job }) => {
 // MetaRow — Small helper component for icon + text rows
 // Used for location and seats info inside the card
 // ============================================================
-const MetaRow = ({ icon, children }) => (
+const MetaRow = ({ Icon, children }) => (
   <div style={{ display: 'flex', alignItems: 'center', gap: '7px', color: 'var(--text-muted)' }}>
-    <Ico d={icon} size={13} />
+    <Icon size={14} strokeWidth={1.8} />
     <span style={{ fontSize: '13px', color: 'var(--text-secondary)', fontWeight: '500' }}>
       {children}
     </span>

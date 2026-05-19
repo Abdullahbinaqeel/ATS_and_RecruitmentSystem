@@ -22,6 +22,7 @@ import api from '../api/axios';
 // Reusable components from our project
 import JobCard from '../components/JobCard';
 import { SectionLoader } from '../components/Loader';
+import { LuArrowRight, LuInbox, LuUser, LuMousePointerClick, LuActivity } from 'react-icons/lu';
 
 // ============================================================
 // Counter — Animated Number Counter
@@ -63,21 +64,7 @@ const Counter = ({ target, suffix = '+' }) => {
   return <>{count.toLocaleString()}{suffix}</>;
 };
 
-// ============================================================
-// Icon — Reusable Inline SVG Icon
-//
-// Props:
-//   d      — SVG path data string
-//   size   — pixel size (default 20)
-//   color  — stroke/fill color (default "currentColor" = inherits from CSS)
-//   stroke — if true, uses stroke; if false, fills the path
-// ============================================================
-const Icon = ({ d, size = 20, color = 'currentColor', stroke = true }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill={stroke ? 'none' : color}
-    stroke={stroke ? color : 'none'} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-    <path d={d} />
-  </svg>
-);
+
 
 // ============================================================
 // Home — Main Component
@@ -146,7 +133,7 @@ const Home = () => {
         <div style={{
           position: 'absolute', top: '-10%', right: '-5%',
           width: '600px', height: '600px', borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(59,130,246,0.18) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(217,119,6,0.18) 0%, transparent 70%)',
           animation: 'orbFloat 14s ease-in-out infinite', // CSS keyframe animation from index.css
           pointerEvents: 'none',
         }} />
@@ -155,7 +142,7 @@ const Home = () => {
         <div style={{
           position: 'absolute', bottom: '-15%', left: '-8%',
           width: '500px', height: '500px', borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(139,92,246,0.14) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(234,88,12,0.14) 0%, transparent 70%)',
           animation: 'orbFloat 18s ease-in-out infinite reverse', // Slower + reversed
           pointerEvents: 'none',
         }} />
@@ -184,12 +171,12 @@ const Home = () => {
           <div style={{ marginBottom: '28px' }}>
             <span style={{
               display: 'inline-flex', alignItems: 'center', gap: '8px',
-              background: 'rgba(59,130,246,0.12)', border: '1px solid rgba(59,130,246,0.25)',
-              color: '#93C5FD', padding: '6px 16px', borderRadius: '9999px',
+              background: 'rgba(217,119,6,0.12)', border: '1px solid rgba(217,119,6,0.25)',
+              color: '#FDBA74', padding: '6px 16px', borderRadius: '9999px',
               fontSize: '12px', fontWeight: '600', letterSpacing: '0.06em', textTransform: 'uppercase',
             }}>
-              {/* Small blue dot */}
-              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#3B82F6', display: 'inline-block' }} />
+              {/* Small dot */}
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#D97706', display: 'inline-block' }} />
               Hiring across Pakistan
             </span>
           </div>
@@ -209,7 +196,7 @@ const Home = () => {
             Your next great{' '}
             {/* Gradient text effect: uses background clipping so the gradient shows through text */}
             <span style={{
-              background: 'linear-gradient(135deg, #60A5FA, #818CF8)',
+              background: 'linear-gradient(135deg, #FDBA74, #D97706)',
               WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
             }}>
@@ -235,7 +222,7 @@ const Home = () => {
           <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', marginBottom: '80px' }}>
             <Link to="/jobs" className="btn btn-white btn-xl">
               Browse Open Roles
-              <Icon d="M17 8l4 4m0 0l-4 4m4-4H3" size={18} />
+              <LuArrowRight size={18} />
             </Link>
             <Link to="/register" className="btn btn-dark btn-xl">
               Post a Job
@@ -291,7 +278,7 @@ const Home = () => {
             </div>
             <Link to="/jobs" className="btn btn-ghost btn-sm">
               View all roles
-              <Icon d="M17 8l4 4m0 0l-4 4m4-4H3" size={16} />
+              <LuArrowRight size={16} />
             </Link>
           </div>
 
@@ -304,7 +291,7 @@ const Home = () => {
           ) : featuredJobs.length === 0 ? (
             <div className="empty-state">
               <div className="empty-state-icon">
-                <Icon d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" size={28} color="var(--text-muted)" />
+                <LuInbox size={28} color="var(--text-muted)" />
               </div>
               <h3>No openings yet</h3>
               <p>New positions are added regularly. Check back soon.</p>
@@ -333,7 +320,7 @@ const Home = () => {
           {/* Section heading — centered */}
           <div style={{ textAlign: 'center', marginBottom: '64px' }}>
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
-              <span className="section-label" style={{ color: '#93C5FD' }}>
+              <span className="section-label" style={{ color: '#FDBA74' }}>
                 Simple Process
               </span>
             </div>
@@ -358,21 +345,23 @@ const Home = () => {
                 n: '01',
                 title: 'Create your profile',
                 desc: 'Sign up in seconds. Upload your resume and cover letter to your profile — apply to any role instantly.',
-                icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z',
+                IconComponent: LuUser,
               },
               {
                 n: '02',
                 title: 'Apply with one click',
                 desc: 'Browse roles by city or department. Your resume is already attached — just hit apply and you\'re done.',
-                icon: 'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z',
+                IconComponent: LuMousePointerClick,
               },
               {
                 n: '03',
                 title: 'Track every update',
                 desc: 'Watch your application move from submitted to shortlisted to hired — get email alerts at every stage.',
-                icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
+                IconComponent: LuActivity,
               },
-            ].map((step) => (
+            ].map((step) => {
+              const StepIcon = step.IconComponent;
+              return (
               // "card-glass" is a CSS class in index.css for a frosted-glass dark card
               <div key={step.n} className="card-glass" style={{ position: 'relative' }}>
                 {/* Step number in the top-right corner */}
@@ -388,11 +377,11 @@ const Home = () => {
                 {/* Step icon in a rounded square */}
                 <div style={{
                   width: '48px', height: '48px', borderRadius: '14px',
-                  background: 'rgba(59,130,246,0.12)', border: '1px solid rgba(59,130,246,0.2)',
+                  background: 'rgba(217,119,6,0.12)', border: '1px solid rgba(217,119,6,0.2)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   marginBottom: '20px',
                 }}>
-                  <Icon d={step.icon} size={22} color="#60A5FA" />
+                  <StepIcon size={22} color="#D97706" strokeWidth={1.8} />
                 </div>
 
                 <h3 style={{ fontSize: '18px', fontWeight: '700', color: '#fff', marginBottom: '10px' }}>
@@ -402,7 +391,7 @@ const Home = () => {
                   {step.desc}
                 </p>
               </div>
-            ))}
+            )})}
           </div>
         </div>
       </section>
