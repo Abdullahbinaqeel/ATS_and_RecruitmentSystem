@@ -257,6 +257,14 @@ const CandidateDashboard = () => {
                               View Job
                             </Link>
                           )}
+                          {/* Practice AI Interview button */}
+                          <Link
+                            to={`/practice-interview/${app._id}`}
+                            className="btn btn-primary btn-sm"
+                            style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+                          >
+                            🤖 Practice Interview
+                          </Link>
                           {/* Withdraw button — only available for 'submitted' applications */}
                           {/* Once an application is reviewed/shortlisted, it can't be withdrawn */}
                           {app.status === 'submitted' && (

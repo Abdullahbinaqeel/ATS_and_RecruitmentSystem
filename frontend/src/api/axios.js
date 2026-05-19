@@ -26,10 +26,6 @@ import axios from 'axios';
 // If that variable isn't set, we fall back to localhost:5000 (local dev server).
 const api = axios.create({
   baseURL: process.env.REACT_APP_API_URL || 'http://localhost:5000',
-  headers: {
-    // Tell the server "I'm sending JSON data, not a form or file upload"
-    'Content-Type': 'application/json',
-  },
 });
 
 // ============================================================

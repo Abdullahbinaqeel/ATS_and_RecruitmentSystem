@@ -91,22 +91,22 @@ const Navbar = () => {
   const navStyle = {
     position: 'sticky', top: 0, zIndex: 200, // Sticks to top of screen when scrolling
     transition: 'background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease',
-    // Transparent dark when over hero, frosted-glass white otherwise
+    // Transparent dark when over hero, solid/frosted black otherwise
     background: isDark
       ? 'rgba(6, 12, 24, 0.6)'
-      : 'rgba(255, 255, 255, 0.94)',
+      : 'rgba(10, 7, 6, 0.96)', // Premium dark/black matching the site's dark theme palette
     backdropFilter: 'blur(16px)', // Frosted-glass blur effect
     WebkitBackdropFilter: 'blur(16px)', // Safari-specific prefix for the same effect
     borderBottom: isDark
       ? '1px solid rgba(255,255,255,0.07)'
-      : '1px solid var(--border)',
-    boxShadow: scrolled && !isDark ? '0 1px 20px rgba(10,16,32,0.08)' : 'none',
+      : '1px solid rgba(255, 255, 255, 0.08)',
+    boxShadow: scrolled && !isDark ? '0 4px 20px rgba(0, 0, 0, 0.25)' : 'none',
   };
 
-  // Text colors adapt to whether we're in dark or light mode
-  const textColor = isDark ? 'rgba(255,255,255,0.85)' : 'var(--text-secondary)';
-  const activeColor = isDark ? '#fff' : 'var(--primary)';
-  const logoColor = isDark ? '#fff' : 'var(--text-primary)';
+  // Text, active, and logo colors are set to light/white to match the dark navbar theme
+  const textColor = 'rgba(255, 255, 255, 0.85)';
+  const activeColor = '#fff';
+  const logoColor = '#fff';
 
   return (
     <nav style={navStyle}>
@@ -149,7 +149,7 @@ const Navbar = () => {
             {!isAuthenticated && (
               <>
                 {/* Vertical divider line */}
-                <div style={{ width: '1px', height: '16px', background: isDark ? 'rgba(255,255,255,0.15)' : 'var(--border)', margin: '0 8px' }} />
+                <div style={{ width: '1px', height: '16px', background: 'rgba(255,255,255,0.15)', margin: '0 8px' }} />
 
                 {/* Log in link — subtle, text-only style */}
                 <Link to="/login" style={{
@@ -212,8 +212,8 @@ const Navbar = () => {
                 {/* Log out button — calls handleLogout on click */}
                 <button onClick={handleLogout} style={{
                   padding: '7px 14px', borderRadius: '8px', fontSize: '13px', fontWeight: '600',
-                  color: textColor, background: isDark ? 'rgba(255,255,255,0.08)' : 'var(--bg)',
-                  border: isDark ? '1px solid rgba(255,255,255,0.12)' : '1px solid var(--border)',
+                  color: '#fff', background: 'rgba(255, 255, 255, 0.08)',
+                  border: '1px solid rgba(255, 255, 255, 0.12)',
                   cursor: 'pointer', transition: 'all 0.22s', letterSpacing: '-0.01em',
                 }}
                   onMouseEnter={e => { e.currentTarget.style.opacity = '0.75'; }}
@@ -235,9 +235,9 @@ const Navbar = () => {
               width: '36px', height: '36px',
               borderRadius: '10px',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              background: isDark ? 'rgba(255,255,255,0.08)' : 'var(--bg)',
-              border: isDark ? '1px solid rgba(255,255,255,0.12)' : '1px solid var(--border)',
-              color: isDark ? 'rgba(255,255,255,0.8)' : 'var(--text-secondary)',
+              background: 'rgba(255, 255, 255, 0.08)',
+              border: '1px solid rgba(255, 255, 255, 0.12)',
+              color: 'rgba(255, 255, 255, 0.8)',
               cursor: 'pointer',
               transition: 'all 0.22s',
               flexShrink: 0,
@@ -271,7 +271,7 @@ const Navbar = () => {
             ].map((transform, i) => (
               <span key={i} style={{
                 display: 'block', width: '22px', height: '2px', borderRadius: '2px',
-                background: isDark ? 'rgba(255,255,255,0.8)' : 'var(--text-primary)',
+                background: 'rgba(255, 255, 255, 0.8)',
                 transition: 'all 0.22s',
                 transform,
                 // The middle bar fades out when the menu opens (so 3 lines → X shape)
@@ -285,8 +285,10 @@ const Navbar = () => {
         {/* Only rendered when menuOpen is true (conditional rendering) */}
         {menuOpen && (
           <div style={{
-            borderTop: isDark ? '1px solid rgba(255,255,255,0.07)' : '1px solid var(--border)',
+            borderTop: '1px solid rgba(255, 255, 255, 0.08)',
             paddingBottom: '16px',
+            background: 'rgba(10, 7, 6, 0.98)',
+            borderRadius: '0 0 12px 12px',
             animation: 'slideDown 0.2s ease', // CSS animation from index.css
           }}>
             {/* Build the menu item list, then filter out items where show is false */}
@@ -305,8 +307,8 @@ const Navbar = () => {
                 display: 'block', padding: '12px 16px',
                 fontSize: '15px', fontWeight: isActive(item.to) ? '700' : '500',
                 color: isActive(item.to)
-                  ? (isDark ? '#FEF3C7' : 'var(--primary)')
-                  : (isDark ? 'rgba(255,255,255,0.7)' : 'var(--text-primary)'),
+                  ? '#FEF3C7'
+                  : 'rgba(255, 255, 255, 0.7)',
                 // Left border accent for the active item
                 borderLeft: isActive(item.to)
                   ? '3px solid var(--primary)' : '3px solid transparent',
@@ -320,9 +322,9 @@ const Navbar = () => {
               <div style={{ padding: '12px 16px' }}>
                 <button onClick={handleLogout} style={{
                   padding: '10px 20px', borderRadius: '8px', fontSize: '14px', fontWeight: '600',
-                  color: isDark ? '#fff' : 'var(--text-primary)',
-                  background: isDark ? 'rgba(255,255,255,0.08)' : 'var(--bg)',
-                  border: '1px solid var(--border)', cursor: 'pointer', width: '100%',
+                  color: '#fff',
+                  background: 'rgba(255, 255, 255, 0.08)',
+                  border: '1px solid rgba(255, 255, 255, 0.12)', cursor: 'pointer', width: '100%',
                 }}>
                   {/* Show the user's first name next to "Log out" for clarity */}
                   Log out ({user?.name?.split(' ')[0]})

@@ -99,6 +99,7 @@ const jobRoutes = require('./routes/jobs');
 const applicationRoutes = require('./routes/applications');
 const interviewRoutes = require('./routes/interviews');
 const hrRoutes = require('./routes/hr');
+const practiceInterviewRoutes = require('./routes/practiceInterviews');
 
 // ── 4. Connect to MongoDB ─────────────────────────────────────
 /*
@@ -216,6 +217,7 @@ app.use('/api/jobs', jobRoutes);           // job listing CRUD + search
 app.use('/api/applications', applicationRoutes); // apply, view pipeline, status updates
 app.use('/api/interviews', interviewRoutes);      // interview scheduling
 app.use('/api/hr', hrRoutes);             // dashboard stats + email sending
+app.use('/api/practice-interviews', practiceInterviewRoutes); // AI practice interviews
 
 // ── 9. Root Route (Sanity Check) ──────────────────────────────
 /*

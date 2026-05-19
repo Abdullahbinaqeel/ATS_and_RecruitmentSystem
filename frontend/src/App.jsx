@@ -48,6 +48,7 @@ import Unauthorized from './pages/Unauthorized';
 // Candidate pages (require 'candidate' role)
 import CandidateDashboard from './pages/candidate/Dashboard';
 import CandidateProfile from './pages/candidate/Profile';
+import PracticeInterview from './pages/candidate/PracticeInterview';
 
 // HR pages (require 'hr' role)
 import HRDashboard from './pages/hr/Dashboard';
@@ -109,6 +110,14 @@ const AppRoutes = () => {
             element={
               <ProtectedRoute allowedRoles={['candidate']}>
                 <CandidateProfile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/practice-interview/:applicationId"
+            element={
+              <ProtectedRoute allowedRoles={['candidate']}>
+                <PracticeInterview />
               </ProtectedRoute>
             }
           />
