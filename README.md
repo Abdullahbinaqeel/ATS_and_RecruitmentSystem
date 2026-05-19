@@ -2,7 +2,7 @@
 
 **TalentBridge** is a comprehensive Multi-Branch Recruitment & Applicant Tracking System (ATS) built with the MERN stack (MongoDB, Express.js, React.js, Node.js). It streamlines the hiring process by providing dedicated portals for Candidates and HR Administrators, complete with branch management, job listings, application tracking, interview scheduling, and automated email notifications.
 
-## 🚀 Tech Stack
+## Tech Stack
 
 - **Frontend:** React.js, React Router, Axios, Custom CSS (Dark Theme / Glassmorphism)
 - **Backend:** Node.js, Express.js
@@ -14,7 +14,7 @@
 
 ---
 
-## ✨ Features
+## Features
 
 ### Public Career Portal
 - View all available jobs and search/filter by branch or department.
@@ -52,7 +52,7 @@ You will also need free accounts for the following services:
 
 ---
 
-## 🛠️ Setup Instructions
+## Setup Instructions
 
 ### 1. Clone the Repository
 ```bash
@@ -93,7 +93,7 @@ REACT_APP_API_URL=http://localhost:5000
 
 ---
 
-## 🚦 Running the Application Locally
+## Running the Application Locally
 
 You can run both the frontend and backend concurrently using the provided shell script at the project root:
 
@@ -135,7 +135,7 @@ For a deeper dive into the exact file creation sequence and architecture logic, 
 
 ---
 
-## 🚀 Deployment (Vercel)
+## Deployment (Vercel)
 
 Both the frontend and backend are optimized for Vercel deployment.
 1. Import the repository into Vercel.
